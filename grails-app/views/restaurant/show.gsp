@@ -58,30 +58,43 @@
             </li>
         </g:if>
 
+        <g:render template="map"/>
+
     </ol>
-    <g:each in="${entries.keySet()}" var="entry">
+    <g:each in="${restaurantInstance?.sections}" var="section">
 
         <div class="content">
-            <h1>${entry}</h1>
+            <h1>${section.type}</h1>
             <ol>
-                <g:each in="${entries.get(entry)}" var="current">
-                    <li>
-                        <p class="entry">
-                            <g:fieldValue bean="${current}"
-                                          field="name"/>
-                        </p>
-                        <g:if test="${current.description}">
-                            <p class="description">
-                                <g:fieldValue bean="${current}"
-                                              field="description"/>
-                            </p>
-                        </g:if>
-                        <p class="price">
-                            <g:fieldValue bean="${current}"
-                                          field="price"/> CHF
-                        </p>
-                    </li>
-                </g:each>
+                <table>
+                    <g:each in="${section.entries}" var="current">
+                        <tr>
+                            <td>
+                                <p class="entry">
+                                    <g:fieldValue bean="${current}"
+                                                  field="name"/>
+                                </p>
+
+
+                                <g:if test="${current.description}">
+                                    <div>
+                                        <p class="description">
+                                            <g:fieldValue bean="${current}"
+                                                          field="description"/>
+                                        </p>
+                                    </div>
+                                </g:if>
+                            </td>
+                            <td width="20%">
+
+                                <p class="price">
+                                    <g:fieldValue bean="${current}"
+                                                  field="price"/> CHF
+                                </p>
+                            </td>
+                        </tr>
+                    </g:each>
+                </table>
             </ol>
         </div>
     </g:each>

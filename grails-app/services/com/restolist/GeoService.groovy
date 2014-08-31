@@ -5,6 +5,7 @@ import groovy.json.JsonSlurper
 class GeoService {
 
     def geocode(Address address) {
+        log.debug("Getting coordinate of: " + address)
         def addr = address.toParameters()
 
         URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=${addr}")
@@ -18,6 +19,9 @@ class GeoService {
 
         def c = new Coordinate(latitude: lat, longitude: lng)
 
+        log.debug("found: " + address)
+
         return c;
+
     }
 }

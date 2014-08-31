@@ -5,25 +5,21 @@ class Entry {
 
     String name
     String description
-    Restaurant restaurant
-    EntryType type
+
+    Section section
     float price
 
-    static belongsTo = [Restaurant]
+    static belongsTo = [Section]
     static hasMany = [ingredients: Ingredient]
 
     String toString() {
-        String.format("%s\n%s\ntype:%s",name,description,type);
+        String.format("%s\n%s\ntype:%s",name,description,section);
     }
 
     static constraints = {
         name(blank: false)
         description(blank: true,nullable: true)
-        type(nullable: false)
         price(min: 0f)
     }
 }
 
-enum EntryType {
-    MAIN, APPETIZER, DESERT
-}

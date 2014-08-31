@@ -21,6 +21,13 @@
         <naming-strategy-map />
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/src/groovy/grails/plugin/databasemigration/dbdoc</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -75,6 +82,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.3.11" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.3.11" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.3.11" level="application" />
     <orderEntry type="module-library" exported="">

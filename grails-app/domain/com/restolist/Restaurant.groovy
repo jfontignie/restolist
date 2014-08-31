@@ -2,20 +2,29 @@ package com.restolist
 
 class Restaurant {
 
+
     static searchable = true
     String name
     Address address
     String phoneNumber
+    //RestaurantType type
 
     Date dateCreated
     Date lastUpdated
 
     static embedded = ['address']
 
-    static hasMany = [entries: Entry]
+    static hasMany = [sections:Section]
 
     String toString() {
         String.format("%s\n%s\n%s", name, address, phoneNumber)
+
+    }
+
+    def beforeValidate() {
+        address.check()
+        //    this.coordinate = geoService.geocode(this).save()
+        //street1 = "balbal"
 
     }
 

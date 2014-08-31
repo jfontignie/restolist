@@ -43,12 +43,7 @@ class RestaurantController {
 
     def show(Restaurant restaurantInstance) {
         def result = [:]
-        Entry.findAllByRestaurant(restaurantInstance).each { it ->
-            if (!result[it.type]) result[it.type] = []
-            result[it.type].add(it)
-        }
-
-        respond restaurantInstance, model: [entries: result]
+        respond restaurantInstance
     }
 
     protected void notFound() {
