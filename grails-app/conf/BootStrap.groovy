@@ -46,23 +46,23 @@ class BootStrap {
                     address: new Address(street1: "27, route de Chancy",zipCode: "1213",city: "Petit-Lancy",country: ch),
             phoneNumber: "022.793.94.60").save()
 
-            def p = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r,priority: 100).save()
-            def a = new Section(type: SectionType.findByType(APPETIZER),restaurant:r,priority: 500).save()
+            def p = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r,priority: 500).save()
+            def a = new Section(type: SectionType.findByType(APPETIZER),restaurant:r,priority: 100).save()
             def d = new Section(type: SectionType.findByType(DESSERT),restaurant:r,priority: 1000).save()
 
-            new Entry(name: "Rouleaux de Neims", price:12f,section:a).save()
-            new Entry(name: "Ribs de porc rôtis", price:13f,section:a).save()
-            new Entry(name: "Dim Sum", price:17f,section:a).save()
+            new Entry(name: "Rouleaux de Neims", price:12f,section:a,priority: 1).save()
+            new Entry(name: "Ribs de porc rôtis", price:13f,section:a,priority: 2).save()
+            new Entry(name: "Dim Sum", price:17f,section:a,priority: 3).save()
 
-            new Entry(name: "Porc Szetchuan sauté deux fois", price:27f,section: p).save()
-            new Entry(name: "Boeuf Szetchuan sauté deux fois", price:29f,section:p).save()
-            new Entry(name: "Boeuf à la sauce saté", price:29f,section:p).save()
-            new Entry(name: "Filet de boeuf au gingembre pimenté", price:29f,section:p).save()
-            new Entry(name: "Boeuf piquant sur lit de vermicelles frits", price:30f,section:p).save()
+            new Entry(name: "Porc Szetchuan sauté deux fois", price:27f,section: p,priority: 101).save()
+            new Entry(name: "Boeuf Szetchuan sauté deux fois", price:29f,section:p,priority: 102).save()
+            new Entry(name: "Boeuf à la sauce saté", price:29f,section:p,priority: 103).save()
+            new Entry(name: "Filet de boeuf au gingembre pimenté", price:29f,section:p,priority: 104).save()
+            new Entry(name: "Boeuf piquant sur lit de vermicelles frits", price:30f,section:p,priority: 105).save()
 
-            new Entry(name: "Beignets de banane, pomme, ananas", price:8.5,section:d).save()
-            new Entry(name: "Litchee au sirop", price:7f,section:d).save()
-            new Entry(name: "Gingembre config", price:7.5,section:d).save()
+            new Entry(name: "Beignets de banane, pomme, ananas", price:8.5,section:d,priority: 1).save()
+            new Entry(name: "Litchee au sirop", price:7f,section:d,priority: 2).save()
+            new Entry(name: "Gingembre config", price:7.5,section:d,priority: 3).save()
 
 
         }

@@ -12,6 +12,7 @@ class Entry {
 
     static belongsTo = [Section]
     static hasMany = [ingredients: Ingredient]
+    static mapping = {sort priority: "asc"}
 
     String toString() {
         String.format("%s\n%s\ntype:%s",name,description,section);

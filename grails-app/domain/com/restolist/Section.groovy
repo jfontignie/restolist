@@ -9,6 +9,7 @@ class Section {
 
     static belongsTo = [Restaurant]
     static hasMany = [entries:Entry]
+    static mapping = {sort priority: "asc"}
 
     static constraints = {
         type(nullable: false)
