@@ -5,6 +5,7 @@ class Section {
 
     SectionType type
     Restaurant restaurant
+    int priority
 
     static belongsTo = [Restaurant]
     static hasMany = [entries:Entry]

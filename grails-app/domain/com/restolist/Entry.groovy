@@ -7,6 +7,7 @@ class Entry {
     String description
 
     Section section
+    int priority
     float price
 
     static belongsTo = [Section]

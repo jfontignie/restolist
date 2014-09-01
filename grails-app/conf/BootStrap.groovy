@@ -46,9 +46,9 @@ class BootStrap {
                     address: new Address(street1: "27, route de Chancy",zipCode: "1213",city: "Petit-Lancy",country: ch),
             phoneNumber: "022.793.94.60").save()
 
-            def p = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r).save()
-            def a = new Section(type: SectionType.findByType(APPETIZER),restaurant:r).save()
-            def d = new Section(type: SectionType.findByType(DESSERT),restaurant:r).save()
+            def p = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r,priority: 100).save()
+            def a = new Section(type: SectionType.findByType(APPETIZER),restaurant:r,priority: 500).save()
+            def d = new Section(type: SectionType.findByType(DESSERT),restaurant:r,priority: 1000).save()
 
             new Entry(name: "Rouleaux de Neims", price:12f,section:a).save()
             new Entry(name: "Ribs de porc rôtis", price:13f,section:a).save()
