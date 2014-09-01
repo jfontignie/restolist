@@ -7,6 +7,8 @@ class Restaurant {
     String name
     Address address
     String phoneNumber
+    String email
+    String website
     //RestaurantType type
 
     Date dateCreated
@@ -32,6 +34,8 @@ class Restaurant {
         name(blank: false)
         address(nullable: false)
         phoneNumber(blank: false)
+        email(email: true, nullable: true)
+        website(url: true, nullable: true)
     }
 }
 
