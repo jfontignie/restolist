@@ -13,6 +13,12 @@ hibernate {
     singleSession = true // configure OSIV singleSession mode
 }
 
+String dbName = System.getProperty("RDS_DB_NAME");
+String userName = System.getProperty("RDS_USERNAME");
+String passWord = System.getProperty("RDS_PASSWORD");
+String hostname = System.getProperty("RDS_HOSTNAME");
+String port = System.getProperty("RDS_PORT");
+
 // environment specific settings
 environments {
     development {
@@ -29,8 +35,10 @@ environments {
     }
     production {
         dataSource {
+            username = userName
+            password = passWord
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://${hostname}:${port}/${dbName}?user=${userName}&password=${password}"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true
