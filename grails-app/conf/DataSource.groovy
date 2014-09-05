@@ -1,7 +1,14 @@
+String dbName = System.getProperty("RDS_DB_NAME");
+String userName = System.getProperty("RDS_USERNAME");
+String passWord = System.getProperty("RDS_PASSWORD");
+String hostname = System.getProperty("RDS_HOSTNAME");
+String port = System.getProperty("RDS_PORT");
+
 dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "org.h2.Driver"
+
     username = "sa"
     password = ""
 }
@@ -13,11 +20,7 @@ hibernate {
     singleSession = true // configure OSIV singleSession mode
 }
 
-String dbName = System.getProperty("RDS_DB_NAME");
-String userName = System.getProperty("RDS_USERNAME");
-String passWord = System.getProperty("RDS_PASSWORD");
-String hostname = System.getProperty("RDS_HOSTNAME");
-String port = System.getProperty("RDS_PORT");
+
 
 // environment specific settings
 environments {
@@ -35,10 +38,15 @@ environments {
     }
     production {
         dataSource {
+
             username = userName
             password = passWord
+            driverClassName = "com.mysql.jdbc.Driver"
             dbCreate = "update"
+
             url = "jdbc:mysql://${hostname}:${port}/${dbName}?user=${userName}&password=${password}"
+            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true

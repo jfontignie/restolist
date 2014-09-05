@@ -23,6 +23,7 @@ class Address {
         zipCode(blank: false)
         city(blank: false)
         country(nullable: false)
+        coordinate(nullable:true)
     }
 
 
