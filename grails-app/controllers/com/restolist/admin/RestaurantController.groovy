@@ -1,9 +1,10 @@
-package com.restolist
+package com.restolist.admin
 
+import com.restolist.Restaurant
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured('ROLE_ADMIN')
-class CrudRestaurantController {
+class RestaurantController {
 
     def scaffold = Restaurant
 }
