@@ -20,18 +20,23 @@ class GeoService {
         String status = result.status;
         if (status.equals(OK_STRING)) {
 
-            String lng = result.results.geometry.location[0].lng
-            String lat = result.results.geometry.location[0].lat
+            try {
+                String lng = result.results.geometry.location[0].lng
+                String lat = result.results.geometry.location[0].lat
 
-            def c = new Coordinate(latitude: lat, longitude: lng)
+                def c = new Coordinate(latitude: lat, longitude: lng)
 
-            log.debug("found: " + address)
-            return c;
+                log.debug("found: " + address)
+                return c;
+            } catch (Exception e) {
+                log.info("Result was: " + json);
+                log.error("Impossible to parse result.", e);
+                return null;
+            }
         } else {
             log.error("Impossible to get the localization: " + status)
             return null;
         }
-
 
 
     }

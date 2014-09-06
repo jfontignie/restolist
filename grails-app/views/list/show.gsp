@@ -58,9 +58,9 @@
 
             </li>
         </g:if>
-
+        <g:if test="${restaurantInstance?.address?.coordinate}">
         <g:render template="map"/>
-
+        </g:if>
     </ol>
     <g:each in="${restaurantInstance?.sections.sort { it.priority }}" var="section">
 
