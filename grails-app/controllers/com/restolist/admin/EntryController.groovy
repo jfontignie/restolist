@@ -1,9 +1,10 @@
-package com.restolist
+package com.restolist.admin
 
+import com.restolist.Entry
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured('ROLE_ADMIN')
-class CrudEntryController {
+class EntryController {
 
     def scaffold = Entry
 }

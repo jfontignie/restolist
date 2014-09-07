@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "restaurant")
+        "/"(controller: "list")
         "500"(view:'/error')
 
 

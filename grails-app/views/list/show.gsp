@@ -5,6 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'restaurant.label', default: 'Restaurant')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <g:render template="analytics"/>
 </head>
 
 <body>

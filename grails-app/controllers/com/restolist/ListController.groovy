@@ -13,7 +13,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
  */
 @PreAuthorize('permitAll()')
 @Transactional(readOnly = true)
-class RestaurantController {
+class ListController {
     static String WILDCARD = "*"
     def searchableService
     private static final log = LogFactory.getLog(this)

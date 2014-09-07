@@ -97,7 +97,8 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+
+        grails.serverURL = "http://Default-Environment-edszktth6f.elasticbeanstalk.com"
     }
 }
 
@@ -138,6 +139,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-    '/restaurant/**':                 ['permitAll']
+    '/restaurant/**':                 ['permitAll'],
+    '/**/**' :                        ['ROLE_ADMIN']
 ]
 

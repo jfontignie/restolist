@@ -4,6 +4,9 @@ import groovy.json.JsonSlurper
 
 class GeoService {
 
+
+    public static final String OK_STRING = "OK"
+
     def geocode(Address address) {
         log.debug("Getting coordinate of: " + address)
         def addr = address.toParameters()
@@ -14,14 +17,22 @@ class GeoService {
         def slurper = new JsonSlurper()
         def result = slurper.parseText(json)
 
-        String lng =result.results.geometry.location[0].lng
-        String lat = result.results.geometry.location[0].lat
+        String status = result.status;
+        if (status.equals(OK_STRING)) {
 
-        def c = new Coordinate(latitude: lat, longitude: lng)
+            String lng = result.results.geometry.location[0].lng
+            String lat = result.results.geometry.location[0].lat
 
-        log.debug("found: " + address)
+            def c = new Coordinate(latitude: lat, longitude: lng)
 
-        return c;
+            log.debug("found: " + address)
+            return c;
+        } else {
+            log.error("Impossible to get the localization: " + status)
+            return null;
+        }
+
+
 
     }
 }
