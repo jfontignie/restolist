@@ -18,6 +18,4 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<center>
-    <div align="center" id="map-canvas" style="width: 500px; height: 400px;"></div>
-</center>
+<div id="map-canvas"></div>
