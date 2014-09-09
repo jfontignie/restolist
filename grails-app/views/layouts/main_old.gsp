@@ -12,45 +12,15 @@
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:layoutHead/>
 		<g:javascript library="application"/>		
 		<r:layoutResources />
 	</head>
 	<body>
-
-
-        <!-- Shell -->
-        <div class="shell">
-
-            <!-- Header -->
-            <div id="header">
-
-                <h1 id="logo">Restolist</h1>
-                <!--<div id="grailsLogo" role="banner"><img src="${resource(dir: 'images', file: 'bee.jpg')}" alt="Béééé"/> Le site des moutons</div> -->
-            </div>
-            <!-- End Header -->
-
-            <!-- Slider -->
-            <div id="slider">
-                <a href="#" id="prev" class="notext">prev</a>
-                <a href="#" id="next" class="notext">next</a>
-
-                <div id="slider-content">
-                </div>
-            </div>
-            <!-- End Slider -->
-
-            <!-- Main -->
-            <div id="main">
-                <g:layoutBody/>
-            </div>
-            <!-- End Main -->
-
-        </div>
-        <!-- End Shell -->
-        <!-- Footer -->
+		<div id="grailsLogo" role="banner"><img src="${resource(dir: 'images', file: 'bee.jpg')}" alt="Béééé"/> Le site des moutons</div>
+		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<r:layoutResources />
