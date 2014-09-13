@@ -87,10 +87,10 @@ grails.project.dependency.resolution = {
         compile ":mail:1.0.7"
         compile ":famfamfam:1.0.1"
         compile ":jquery-ui:1.10.3"
+        compile ":spring-security-ui:1.0-RC2"
 
 
         compile ":searchable:0.6.8"
 
-        //TODO User spring-security-ui
     }
 }

@@ -62,7 +62,7 @@ class BootStrap {
 
             new Entry(name: "Beignets de banane, pomme, ananas", price:8.5,section:d,priority: 1).save()
             new Entry(name: "Litchee au sirop", price:7f,section:d,priority: 2).save()
-            new Entry(name: "Gingembre config", price:7.5,section:d,priority: 3).save()
+            new Entry(name: "Gingembre confi", price:7.5,section:d,priority: 3).save()
 
 
         }
