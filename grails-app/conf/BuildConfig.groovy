@@ -84,6 +84,11 @@ grails.project.dependency.resolution = {
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
         compile ":spring-security-core:2.0-RC4"
+        compile ":mail:1.0.7"
+        compile ":famfamfam:1.0.1"
+        compile ":jquery-ui:1.10.3"
+
+
         compile ":searchable:0.6.8"
 
         //TODO User spring-security-ui

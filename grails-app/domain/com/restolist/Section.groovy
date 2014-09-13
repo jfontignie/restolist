@@ -11,6 +11,10 @@ class Section {
     static hasMany = [entries:Entry]
     static mapping = {sort priority: "asc"}
 
+    String toString() {
+        type
+    }
+
     static constraints = {
         type(nullable: false)
     }

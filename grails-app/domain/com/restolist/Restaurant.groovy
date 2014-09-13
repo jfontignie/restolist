@@ -9,12 +9,15 @@ class Restaurant {
     String phoneNumber
     String email
     String website
+    //TimeTable timeTable
+
     //RestaurantType type
 
     Date dateCreated
     Date lastUpdated
 
-    static embedded = ['address']
+
+    //static embedded = ['address']
 
     static hasMany = [sections:Section]
 
@@ -25,9 +28,6 @@ class Restaurant {
 
     def beforeValidate() {
         address.check()
-        //    this.coordinate = geoService.geocode(this).save()
-        //street1 = "balbal"
-
     }
 
     static constraints = {

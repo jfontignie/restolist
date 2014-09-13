@@ -43,7 +43,7 @@ class BootStrap {
         if (!Restaurant.count){
             def ch = Country.findAllByName("Suisse").get(0)
             def r = new Restaurant(name: "Le Corl",
-                    address: new Address(street1: "27, route de Chancy",zipCode: "1213",city: "Petit-Lancy",country: ch),
+                    address: new Address(street1: "27, route de Chancy",zipCode: "1213",city: "Petit-Lancy",country: ch).save(),
             phoneNumber: "022.793.94.60").save()
 
             def p = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r,priority: 500).save()

@@ -4,7 +4,7 @@ class Address {
     def geoService
 
     static searchable = true
-    static embedded = ['coordinate']
+    //static embedded = ['coordinate']
 
     String street1
     String street2
@@ -23,18 +23,21 @@ class Address {
         zipCode(blank: false)
         city(blank: false)
         country(nullable: false)
-        coordinate(nullable:true)
+        coordinate(nullable: true)
     }
 
 
     def toParameters() {
-        "${street1}${street2 == "" ? "" : "+${street2}"}+${zipCode}+${city}+${country}".replaceAll(" ", "+")
+        //"${street1}${street2 == "" ? "" : "+${street2}"}+${zipCode}+${city}+${country}".replaceAll(" ", "+")
+        URLEncoder.encode("${street1}${street2 == "" ? "" : "+${street2}"}+${zipCode}+${city}+${country}","UTF-8")
     }
 
     Object check() {
         if (coordinate == null) {
             coordinate = geoService.geocode(this)
+            if (coordinate != null) coordinate.save()
         }
+
 
     }
 }
