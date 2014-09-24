@@ -11,7 +11,7 @@ class Restaurant {
     String website
     //TimeTable timeTable
 
-    //RestaurantType type
+    RestaurantType type
 
     Date dateCreated
     Date lastUpdated

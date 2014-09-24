@@ -14,7 +14,7 @@ class Address {
     Coordinate coordinate
 
 
-    String toString() { String.format("%s %s - %s - %s", street1, street2 ?: "", zipCode, country) }
+    String toString() { String.format("%s %s - %s - %s", street1, street2 ?: "", zipCode, city, country) }
 
     static constraints = {
 
