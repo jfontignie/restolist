@@ -1,21 +1,18 @@
-String dbName = "restolist";//System.getProperty("RDS_DB_NAME");
-String userName = "restolist";//System.getProperty("RDS_USERNAME");
-String passWord = "restolist";//System.getProperty("RDS_PASSWORD");
-String hostname = "localhost";//System.getProperty("RDS_HOSTNAME");
-String port = "3306";//System.getProperty("RDS_PORT");
+String dbNameDev = "restolist";
+String usernameDev = "restolist";
+String passwordDev = "restolist";
+String hostnameDev = "localhost";
+String portDev = "3306";
+
+String dbNameProd = System.getProperty("RDS_DB_NAME");
+String usernameProd = System.getProperty("RDS_USERNAME");
+String passwordProd = System.getProperty("RDS_PASSWORD");
+String hostnameProd = System.getProperty("RDS_HOSTNAME");
+String portProd = System.getProperty("RDS_PORT");
+
 
 dataSource {
-  /*  pooled = true
-    jmxExport = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""    */
-
-    username = userName
-    password = passWord
     driverClassName = "com.mysql.jdbc.Driver"
-
-    url = "jdbc:mysql://${hostname}:${port}/${dbName}?user=${userName}&password=${password}"
     dialect = org.hibernate.dialect.MySQL5InnoDBDialect
 
     properties {
@@ -54,46 +51,19 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-        //    url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://${hostnameDev}:${portDev}/${dbNameDev}?user=${usernameDev}&password=${passwordDev}"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-      //      url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://${hostnameDev}:${portDev}/${dbNameDev}?user=${usernameDev}&password=${passwordDev}"
         }
     }
     production {
         dataSource {
-
-         //   username = userName
-         //   password = passWord
-         //   driverClassName = "com.mysql.jdbc.Driver"
             dbCreate = "update"
-
-        /*    url = "jdbc:mysql://${hostname}:${port}/${dbName}?user=${userName}&password=${password}"
-            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-
-            properties {
-               // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
-               jmxEnabled = true
-               initialSize = 5
-               maxActive = 50
-               minIdle = 5
-               maxIdle = 25
-               maxWait = 10000
-               maxAge = 10 * 60000
-               timeBetweenEvictionRunsMillis = 5000
-               minEvictableIdleTimeMillis = 60000
-               validationQuery = "SELECT 1"
-               validationQueryTimeout = 3
-               validationInterval = 15000
-               testOnBorrow = true
-               testWhileIdle = true
-               testOnReturn = false
-               jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
-            }             */
+            url = "jdbc:mysql://${hostnameProd}:${portProd}/${dbNameProd}?user=${usernameProd}&password=${passwordProd}"
         }
     }
 }
