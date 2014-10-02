@@ -8,7 +8,15 @@ class BootStrap {
 
 
     public static final String ASIATIQUE = "asiatique"
+    public static final String EUROPEEN = "européen"
+    public static final String AMERICAIN = "américain"
+
+    public static final String CHINOIS = "chinois"
+    public static final String THAI = "thaïlandais"
+    public static final String INDIEN = "indien"
+    public static final String VIET = "vietnamien"
     public static final String ITALIEN = "italien"
+    public static final String MEXICAIN = "mexicain"
     public static final String LOCAL = "local"
 
 
@@ -30,10 +38,20 @@ class BootStrap {
             new Country(name: "France").save()
         }
 
+        if (!RestaurantOverType.count){
+            new RestaurantOverType(overType: EUROPEEN).save()
+            new RestaurantOverType(overType: ASIATIQUE).save()
+            new RestaurantOverType(overType: AMERICAIN).save()
+        }
+
         if (!RestaurantType.count){
-            new RestaurantType(type: ITALIEN).save()
-            new RestaurantType(type: ASIATIQUE).save()
-            new RestaurantType(type: LOCAL).save()
+            new RestaurantType(type: ITALIEN,restaurantOverType: RestaurantOverType.findByOverType(EUROPEEN)).save()
+            new RestaurantType(type: LOCAL,restaurantOverType: RestaurantOverType.findByOverType(EUROPEEN)).save()
+            new RestaurantType(type: VIET,restaurantOverType: RestaurantOverType.findByOverType(ASIATIQUE)).save()
+            new RestaurantType(type: CHINOIS,restaurantOverType: RestaurantOverType.findByOverType(ASIATIQUE)).save()
+            new RestaurantType(type: THAI,restaurantOverType: RestaurantOverType.findByOverType(ASIATIQUE)).save()
+            new RestaurantType(type: INDIEN,restaurantOverType: RestaurantOverType.findByOverType(ASIATIQUE)).save()
+            new RestaurantType(type: MEXICAIN,restaurantOverType: RestaurantOverType.findByOverType(AMERICAIN)).save()
         }
 
         if (!Ingredient.count){
@@ -54,11 +72,61 @@ class BootStrap {
             def ad2 = new Address(street1: "82, avenue d'Echallens",zipCode: "1004",city: "Lausanne",country: ch).save()
             def ad3 = new Address(street1: "2, avenue du Temple",zipCode: "1020",city: "Renens VD",country: ch).save()
             def ad4 = new Address(street1: "11, chemin des Baumettes",zipCode: "1020",city: "Renens VD",country: ch).save()
-            def r0 = new Restaurant(name: "Le Coral", address: ad0, phoneNumber: "022.793.94.60", type: RestaurantType.findByType(ASIATIQUE)).save()
-            def r1 = new Restaurant(name: "Restaurant de la Plage", address: ad1, phoneNumber: "022.362.61.01", type: RestaurantType.findByType(LOCAL)).save()
-            def r2 = new Restaurant(name: "L'Indochine", address: ad2, phoneNumber: "021.625.88.88", type: RestaurantType.findByType(ASIATIQUE)).save()
+            def ad5 = new Address(street1: "4, rue de l'Industrie",zipCode: "1030",city: "Bussigny-près-Lausanne",country: ch).save()
+            def ad6 = new Address(street1: "5, rue de la Gare",zipCode: "1030",city: "Bussigny-près-Lausanne",country: ch).save()
+            def ad7 = new Address(street1: "63, rue de l'Industrie",zipCode: "1030",city: "Bussigny-près-Lausanne",country: ch).save()
+            def ad8 = new Address(street1: "16, place Chauderon",zipCode: "1003",city: "Lausanne",country: ch).save()
+            def ad9 = new Address(street1: "3, escaliers du Grand-Pont",zipCode: "1003",city: "Lausanne",country: ch).save()
+            def ad10 = new Address(street1: "10, rue du Tunnel",zipCode: "1005",city: "Lausanne",country: ch).save()
+            def ad11 = new Address(street1: "24, rue du Bugnon",zipCode: "1005",city: "Lausanne",country: ch).save()
+            def ad12 = new Address(street1: "282, route de Saint-Julien",zipCode: "1258",city: "Perly",country: ch).save()
+            def ad13 = new Address(street1: "278, route de Saint-Julien",zipCode: "1258",city: "Perly",country: ch).save()
+            def ad14 = new Address(street1: "34, chemin des Semailles",zipCode: "1212",city: "Grand_Lancy",country: ch).save()
+            def ad15 = new Address(street1: "4, place du Rondeau",zipCode: "1227",city: "Carouge",country: ch).save()
+            def ad16 = new Address(street1: "11, rue Jacques-Dalphin",zipCode: "1227",city: "Carouge",country: ch).save()
+            def ad17 = new Address(street1: "43, boulevard Carl-Vogt",zipCode: "1205",city: "Genève",country: ch).save()
+            def ad18 = new Address(street1: "21, avenue de Sainte-Clotilde",zipCode: "1205",city: "Genève",country: ch).save()
+            def ad19 = new Address(street1: "25, rue Voltaire",zipCode: "1201",city: "Genève",country: ch).save()
+
+            def r0 = new Restaurant(name: "Le Coral", address: ad0, phoneNumber: "022.793.94.60", type: RestaurantType.findByType(CHINOIS)).save()
+            def r1 = new Restaurant(name: "Restaurant de la Plage", address: ad1, phoneNumber: "022.362.61.01", website: "http://www.lerestaurantdelaplage.ch/", type: RestaurantType.findByType(LOCAL)).save()
+            def r2 = new Restaurant(name: "L'Indochine", address: ad2, phoneNumber: "021.625.88.88", type: RestaurantType.findByType(VIET)).save()
             def r3 = new Restaurant(name: "La Rose Rouge", address: ad3, phoneNumber: "021.634.58.27", type: RestaurantType.findByType(ITALIEN)).save()
-            def r4 = new Restaurant(name: "Le Cacib", address: ad4, phoneNumber: "021.634.34.94", type: RestaurantType.findByType(ITALIEN)).save()
+            def r4 = new Restaurant(name: "Le Cacib", address: ad4, phoneNumber: "021.634.34.94", website: "http://www.restaurant-pizzeria.net/", type: RestaurantType.findByType(ITALIEN)).save()
+            def r5 = new Restaurant(name: "Les Arcades", address: ad5, phoneNumber: "021.701.59.15", website:"http://www.lesarcades.ch/", type: RestaurantType.findByType(ITALIEN)).save()
+            def r6 = new Restaurant(name: "Shanghai Garden", address: ad6, phoneNumber: "021.701.21.08", website:"http://www.shanghaigarden.ch/", type: RestaurantType.findByType(CHINOIS)).save()
+            def r7 = new Restaurant(name: "Chez Cavu", address: ad7, phoneNumber: "021.612.82.62", website:"http://www.chezcavu.ch/", type: RestaurantType.findByType(LOCAL)).save()
+            def r8 = new Restaurant(name: "Au Canard Pékinois", address: ad8, phoneNumber: "021.329.03.23", website:"http://www.au-canard-pekinois.ch/", type: RestaurantType.findByType(CHINOIS)).save()
+            def r9 = new Restaurant(name: "Ma-Jong", address: ad9, phoneNumber: "021.329.05.25", website:"http://www.ma-jong.ch/", type: RestaurantType.findByType(CHINOIS)).save()
+            def r10 = new Restaurant(name: "Chez Xu 1", address: ad10, phoneNumber: "021.312.40.87", website:"http://www.ma-jong.ch/", type: RestaurantType.findByType(CHINOIS)).save()
+            def r11 = new Restaurant(name: "Sabaidee Thai-Vieng", address: ad11, phoneNumber: "021.544.59.59", website:"http://www.sabaidee-thai-vieng.ch/", type: RestaurantType.findByType(CHINOIS)).save()
+            def r12 = new Restaurant(name: "Chez Renato", address: ad12, phoneNumber: "022.771.45.19", type: RestaurantType.findByType(ITALIEN)).save()
+            def r13 = new Restaurant(name: "Al Castellino", address: ad13, phoneNumber: "022.771.11.98", website:"http://www.alcastellino.ch/",type: RestaurantType.findByType(ITALIEN)).save()
+            def r14 = new Restaurant(name: "Semailles", address: ad14, phoneNumber: "022.794.87.77", type: RestaurantType.findByType(ITALIEN)).save()
+            def r15 = new Restaurant(name: "Boccalino", address: ad15, phoneNumber: "022.343.73.87", website:"http://www.restaurant-boccalino.ch",type: RestaurantType.findByType(ITALIEN)).save()
+            def r16 = new Restaurant(name: "Le Canard Intelligent", address: ad16, phoneNumber: "022.342.29.73", website:"http://www.canard-intelligent.com/",type: RestaurantType.findByType(CHINOIS)).save()
+            def r17 = new Restaurant(name: "Sole Mio", address: ad17, phoneNumber: "022.321.75.07", website:"http://www.solemio-geneve.ch/",type: RestaurantType.findByType(CHINOIS)).save()
+            def r18 = new Restaurant(name: "Jaipur", address: ad18, phoneNumber: "022.329.05.04", type: RestaurantType.findByType(INDIEN)).save()
+            def r19 = new Restaurant(name: "Chat Rouge", address: ad19, phoneNumber: "022.344.98.98", website: "http://www.lechatrouge.ch/", type: RestaurantType.findByType(MEXICAIN)).save()
+
+            new Opening(restaurant: r0,lundiMidi: false,lundiSoir: false,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: true,dimancheSoir: true).save()
+            new Opening(restaurant: r1,lundiMidi: false,lundiSoir: false,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: true,dimancheSoir: true).save()
+            new Opening(restaurant: r2,lundiMidi: false,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r3,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r4,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: true,dimancheSoir: true).save()
+            new Opening(restaurant: r5,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: false,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r6,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r7,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r8,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r9,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: false,dimancheSoir: true).save()
+            new Opening(restaurant: r11,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r13,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r14,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: true,dimancheSoir: true).save()
+            new Opening(restaurant: r15,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: true,dimancheSoir: true).save()
+            new Opening(restaurant: r16,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: true,dimancheSoir: true).save()
+            new Opening(restaurant: r17,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: true,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r18,lundiMidi: true,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: false).save()
+            new Opening(restaurant: r19,lundiMidi: false,lundiSoir: true,mardiMidi: true,mardiSoir: true,mercrediMidi: true,mercrediSoir: true,jeudiMidi: true,jeudiSoir: true,vendrediMidi: true,vendrediSoir: true,samediMidi: false,samediSoir: true,dimancheMidi: false,dimancheSoir: true).save()
 
             def p0 = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r0,priority: 500).save()
             def a0 = new Section(type: SectionType.findByType(APPETIZER),restaurant:r0,priority: 100).save()
@@ -79,6 +147,11 @@ class BootStrap {
             def p4 = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r4,priority: 500).save()
             def a4 = new Section(type: SectionType.findByType(APPETIZER),restaurant:r4,priority: 100).save()
             def d4 = new Section(type: SectionType.findByType(DESSERT),restaurant:r4,priority: 1000).save()
+
+            def p5 = new Section(type: SectionType.findByType(MAIN_PLATE),restaurant:r5,priority: 500).save()
+            def a5 = new Section(type: SectionType.findByType(APPETIZER),restaurant:r5,priority: 100).save()
+            def d5 = new Section(type: SectionType.findByType(DESSERT),restaurant:r5,priority: 1000).save()
+
 
             new Entry(name: "Rouleaux de Neims", price:12f,section:a0,priority: 1).save()
             new Entry(name: "Ribs de porc rôtis", price:13f,section:a0,priority: 2).save()
